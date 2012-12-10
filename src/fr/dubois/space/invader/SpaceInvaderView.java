@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class SpaceInvaderView extends View {
@@ -70,7 +71,6 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "Texte";
-
 		alien=loadImage(R.drawable.alien1);
 
 	}
@@ -134,6 +134,32 @@ protected void onSizeChanged (int w, int h, int oldw, int oldh)
         int StackSpacing = widthMeasureSpec/100;
 }
 
+public boolean onTouchEvent(MotionEvent event)
+{
+        boolean bIsComplete;
+		if (bIsComplete)
+        {
+                return true;
+        }
+        int X = (int) event.getX();
+        int Y = (int) event.getY();
+
+        switch (event.getAction())
+        {
+                case MotionEvent.ACTION_DOWN:
+                {
+                        /* Find out which stack the user is touching, if any */
+                        int Source = (Integer) stackAt(X);
+                        if (Source == -1)
+                        {
+                                return true;
+                        }
+
+
+	private Object stackAt(int x) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 	private int computeSize(int spec,int def){
 		int mode = View.MeasureSpec.getMode(spec);
@@ -155,3 +181,5 @@ protected void onSizeChanged (int w, int h, int oldw, int oldh)
 	}
 		
 }
+
+
